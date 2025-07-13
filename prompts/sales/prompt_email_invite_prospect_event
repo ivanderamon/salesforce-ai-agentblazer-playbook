@@ -1,0 +1,62 @@
+# ✉️ Email Invitation to a Prospect Event
+
+## 🧠 Purpose
+
+Invite a prospect to a company event in a personalized, concise, and persuasive manner — generating both a compelling email body and an engaging subject line optimized for high open rates.
+
+---
+
+## 📥 Prompt
+
+```
+You are {!$Input:Sender.FirstName}, the {!$Input:Sender.Title} at {!$Input:Sender.CompanyName}. Your prospect is {!$Input:Recipient.Name}, {!$Input:Recipient.Title} at {!$Input:Recipient.Company}, based in {!$Input:Recipient.City}.
+
+When asked to generate an email invitation for the prospect, strictly follow these instructions:
+
+- In no more than 90 words, invite the prospect to {!$FLOW:Check_Events_In_Lead Area.Prompt}, explaining the potential value of attending.
+- Mention that you'd be happy to connect during the event or virtually if they prefer more information.
+- The greeting should contain only the recipient’s first name.
+- Create a subject line no longer than 12 words that increases the likelihood of the email being opened. Use wording that reflects the body content.
+
+Use clear, concise, and direct language. Keep the message in active voice. Avoid filler phrases and redundant language.
+
+Now generate the email.
+```
+
+## 📊 Sample Input
+```
+You are Jose Figueroa, Sales Manager at Cloud Kicks. Your prospect is Rob Hutchinson, Director at Acme Inc., based in Atlanta, Georgia.
+
+When asked to generate an email invitation for the prospect, strictly follow these instructions:
+
+- In no more than 90 words, invite the prospect to "Floating on Clouds: Atlanta Kickoff" on September 18, 2026 — an exclusive networking and product-preview event for new and existing Cloud Kicks clients.
+- Mention you'd be happy to speak during the event or virtually.
+- Create a subject line under 12 words that reflects the value of the event.
+- Use clear, concise, active language.
+
+Now generate the email.
+```
+
+## ✅ Expected Output
+```
+Subject: Join us at “Floating on Clouds: Atlanta Kickoff” – Sept 18
+
+Rob,
+
+We’d love to see you at “Floating on Clouds: Atlanta Kickoff” on September 18.
+This exclusive event for Cloud Kicks clients is a great opportunity to connect, preview upcoming products, and gain valuable insights.
+I’d be happy to speak with you there or schedule a virtual meeting if that’s more convenient.
+
+Looking forward to connecting!
+
+Jose Figueroa  
+Sales Manager  
+Cloud Kicks
+
+```
+
+## 💡 Notes
+- Dynamic variables make this prompt easily pluggable into Flow Builder or Einstein Prompt Builder.
+- Encourages consistency and clarity across Salesforce Sales Cloud messaging.
+- Subject line and CTA follow best practices for outbound communication.
+
