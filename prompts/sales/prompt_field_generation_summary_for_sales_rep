@@ -1,0 +1,108 @@
+# Field Generation for Sales Call Summaries
+
+## Purpose
+
+Showcase how field generation using AI can automate the creation of concise summaries of customer cases, helping sales reps prepare before client calls. This prompt integrates seamlessly with Flow Builder and large language models (LLMs), reducing repetitive work while improving internal communication.
+
+---
+
+## Scenario
+
+A Salesforce Admin realized that sales reps were often unaware of ongoing customer issues during their calls. 
+Managers suggested customer support provide up-to-date case summaries, but doing so manually was impractical.
+The Salesforce Admin turned to Prompt Builder and Flow Builder to automate the generation of these summaries. After testing, she arrived at the following field generation template.
+
+---
+
+## 📥 Prompt Template (Translated and Adapted)
+
+```
+You are a customer support representative. Your task is to generate a brief summary of all open cases for a specific customer so that a sales rep can prepare for a call.
+
+You must treat all individuals equally regardless of socioeconomic status, sexual orientation, religion, race, appearance, nationality, gender identity, disability, or age. When information is missing, use "Unknown" instead of making assumptions.
+
+Instructions:
+
+
+- Follow the instructions strictly. Do not invent or add any data not provided.
+- Inform the rep about the total number of open and escalated cases.
+- Then, summarize the escalated case issues clearly.
+- Use clear, concise, and direct language. Prefer active voice. Avoid fillers or redundant language.
+- Keep a friendly, conversational tone.
+
+Data Input (from Flow):
+
+{!$Flow:Ground_On_Open_Cases_For_Account.Prompt}
+
+```
+
+## Example Input (JSON from Flow)
+
+```
+{
+  "Cases": {
+    "00001004": {
+      "Status": "Escalated",
+      "Subject": "Fraudulent activity",
+      "Description": "Suspected fraud related to a shoe order."
+    },
+    "00001005": {
+      "Status": "Escalated",
+      "Subject": "Missing shoe shipment",
+      "Description": "Customer hasn’t received the order; tracking info is outdated."
+    },
+    "00001006": {
+      "Status": "Escalated",
+      "Subject": "Incorrect shoe style",
+      "Description": "Customer received a different shoe style than ordered."
+    },
+    "00001007": {
+      "Status": "Pending",
+      "Subject": "Worn shoe sole",
+      "Description": "Customer reports early wear on the shoe sole."
+    },
+    "00001008": {
+      "Status": "Escalated",
+      "Subject": "Delayed delivery",
+      "Description": "Shoes have not arrived within the estimated timeframe."
+    },
+    "00001009": {
+      "Status": "Pending",
+      "Subject": "Damaged shoebox",
+      "Description": "Shoebox damaged during transit."
+    },
+    "00001010": {
+      "Status": "Escalated",
+      "Subject": "Wrong shoe size",
+      "Description": "Customer received the incorrect size."
+    },
+    "00001011": {
+      "Status": "Pending",
+      "Subject": "Incorrect billing",
+      "Description": "Billing info does not match order details."
+    }
+  }
+}
+```
+
+## Expected Output
+
+```
+There are 8 open cases for this customer, 5 of them escalated.
+
+Escalated cases summary:
+
+- Case 00001004: Investigating potential fraud related to the shoe order, ensuring transaction authenticity and addressing security concerns.
+
+- Case 00001005: Missing shipment is under investigation; tracking issues are being resolved to ensure customer satisfaction.
+
+- Case 00001006: Addressing a mismatch in shoe style received; resolution in progress.
+
+- Case 00001008: Customer reported a delayed delivery, causing frustration; prioritizing fast resolution.
+
+- Case 00001010: Customer received incorrect shoe size, affecting comfort and usability; urgent attention required.
+
+All details are based strictly on the provided open cases. No assumptions or extrapolations have been made.
+
+```
+
